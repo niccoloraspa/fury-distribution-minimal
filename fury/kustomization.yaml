@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+
+  # Fury monitoring
+  - ../vendor/katalog/monitoring/prometheus-operator
+  - ../vendor/katalog/monitoring/prometheus-operated
+  - ../vendor/katalog/monitoring/alertmanager-operated
+  - ../vendor/katalog/monitoring/node-exporter
+  - ../vendor/katalog/monitoring/kube-state-metrics
+  - ../vendor/katalog/monitoring/grafana
+  - ../vendor/katalog/monitoring/goldpinger
+  - ../vendor/katalog/monitoring/kubeadm-sm
+  - ../vendor/katalog/monitoring/configs
+
+  # Fury logging
+  - ../vendor/katalog/logging/elasticsearch-single
+  - ../vendor/katalog/logging/fluentd
+  - ../vendor/katalog/logging/kibana
+
+  # Fury Ingress
+  - ../vendor/katalog/ingress/nginx
+  - ../vendor/katalog/ingress/forecastle
+
+  # Custom resources
+  - resources/ingress.yaml
+
+patchesStrategicMerge:
+  - patches/logging-resources.yaml
+  - patches/monitoring-resources.yaml
+  - patches/ingress-resources.yaml

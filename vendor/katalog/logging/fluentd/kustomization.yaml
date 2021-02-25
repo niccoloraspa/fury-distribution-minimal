@@ -1,0 +1,36 @@
+# Copyright (c) 2020 SIGHUP s.r.l All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+namespace: logging
+
+resources:
+  - fluentd.yml
+  - fluentbit.yaml
+  - rbac.yml
+  - sm.yml
+
+images:
+  - name: quay.io/sighup/fluentd-elasticsearch
+    newTag: v1.11.2-debian-1.0
+  - name: fluent/fluent-bit
+    newTag: 1.5.6
+
+configMapGenerator:
+- name: fluentd-conf
+  files:
+    - fluent.conf
+- name: fluentd-confd
+  files:
+    - kubernetes-output.conf=conf.d/kubernetes-output.conf
+    - system-output.conf=conf.d/system-output.conf
+    - ingress-controller-output.conf=conf.d/ingress-controller-output.conf
+    - audit-output.conf=conf.d/audit-output.conf
+- name: fluentd-index-template
+  files:
+    - fluentd-index-sighup-template.json
+
+secretGenerator:
+  - name: fluentbit
+    files:
+      - fluent-bit.conf

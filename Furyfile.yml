@@ -1,0 +1,25 @@
+versions:
+  monitoring: v1.10.3
+  logging: v1.6.0
+  ingress: v1.9.1
+
+bases:
+  # Ingress
+  - name: ingress/forecastle
+  - name: ingress/nginx
+
+  # Logging
+  - name: logging/elasticsearch-single
+  - name: logging/fluentd
+  - name: logging/kibana
+  
+  # Monitoring
+  - name: monitoring/prometheus-operator
+  - name: monitoring/prometheus-operated
+  - name: monitoring/alertmanager-operated
+  - name: monitoring/node-exporter
+  - name: monitoring/kube-state-metrics
+  - name: monitoring/grafana
+  - name: monitoring/goldpinger
+  - name: monitoring/kubeadm-sm
+  - name: monitoring/configs
