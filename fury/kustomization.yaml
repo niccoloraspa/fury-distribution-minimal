@@ -20,11 +20,11 @@ resources:
   # - ../vendor/katalog/logging/kibana
 
   # # Fury Ingress
-  # - ../vendor/katalog/ingress/nginx
-  # - ../vendor/katalog/ingress/forecastle
+  - ../vendor/katalog/ingress/nginx
+  - ../vendor/katalog/ingress/forecastle
 
   # Custom resources
-  # - resources/ingress.yaml
+  - resources/ingress.yaml
 
 patchesStrategicMerge:
     - patches/monitoring/alertmanager-operated-replicas.yaml
