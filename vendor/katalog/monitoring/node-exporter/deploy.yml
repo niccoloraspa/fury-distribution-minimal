@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
+---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -19,7 +20,7 @@ spec:
     spec:
       initContainers:
       - name: machine-id
-        image: alpine:3
+        image: alpine
         command: ['/bin/sh', '-c']
         args: ['echo systemd_machine_id{id=\"$(cat /host/root/etc/machine-id)\"} 1 > /var/lib/node_exporter/machine_id.prom']
         volumeMounts:

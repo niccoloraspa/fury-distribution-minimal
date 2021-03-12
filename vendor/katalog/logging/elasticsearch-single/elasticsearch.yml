@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -54,7 +55,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       initContainers:
         - name: sysctl
-          image: alpine:3.12
+          image: alpine
           command:
             - sh
             - -c

@@ -1,7 +1,7 @@
 versions:
-  monitoring: v1.10.3
-  logging: v1.6.0
-  ingress: v1.9.1
+  monitoring: d4ac34771b33611490d8c64cb458cabe874c2956
+  logging: v1.7.1  
+  ingress: d34f8228dc8b108526f8dbfbcf598c74f842832e
 
 bases:
   # Ingress

@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -12,6 +13,7 @@ rules:
   resources:
   - alertmanagers
   - alertmanagers/finalizers
+  - alertmanagerconfigs
   - prometheuses
   - prometheuses/finalizers
   - thanosrulers
@@ -64,6 +66,14 @@ rules:
   - ""
   resources:
   - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
   verbs:
   - get
   - list

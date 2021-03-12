@@ -2,16 +2,19 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-namespace: monitoring
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
-bases:
-  - dashboards
+namespace: monitoring
 
 images:
 - name: quay.io/coreos/kube-state-metrics
+  newName: registry.sighup.io/fury/coreos/kube-state-metrics
   newTag: v1.9.7
 
 resources:
-- deploy.yml
-- rbac.yml
-- sm.yml
+  - dashboards
+  - deploy.yml
+  - rbac.yml
+  - sm.yml
