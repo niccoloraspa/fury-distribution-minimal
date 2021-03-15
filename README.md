@@ -1,6 +1,6 @@
-# Fury Distribution Minikube
+# Fury Distribution Minimal
 
-A minimimal deployment of the [Fury Kubernetes Distribution](https://github.com/sighupio/fury-distribution) in a minikube environment.
+A minimal deployment of the [Fury Kubernetes Distribution](https://github.com/sighupio/fury-distribution) in a minikube environment.
 
 ## Tools required
 
@@ -18,9 +18,9 @@ The following modules of the distribution are deployed:
 | -------------                                                             | -------------                            |
 | [Fury Monitoring](https://github.com/sighupio/fury-kubernetes-monitoring) | v1.11.1                                  |
 | [Fury Logging](https://github.com/sighupio/fury-kubernetes-logging)       | v1.7.1                                   |
-| [Fury Ingress](https://github.com/sighupio/fury-kubernetes-ingress)       | v1.9.1                                   |
+| [Fury Ingress](https://github.com/sighupio/fury-kubernetes-ingress)       | d34f8228dc8b108526f8dbfbcf598c74f842832e |
 
-You change the version by modifying the `Furyfile.yml` and then update the vendor folder via `furyctl vendor -H`
+You can change the versions by modifying the `Furyfile.yml` and then update the vendor folder via `furyctl vendor -H.`
 
 ### Packages Deployed
 
@@ -63,7 +63,7 @@ $ cat Furyfile.yml | grep ingress
 
 ## Start minikube cluster
 
-At the root level of this repository execute:
+At the root level of this repository, execute:
 
 ```bash
 export REPO_DIR=$(PWD)
@@ -76,9 +76,9 @@ cd $REPO_DIR/minikube
 make setup
 ```
 
-By default it will spin up a one node Kubernetes cluster of version `v1.19.4` in virtualbox VM (CPUs=4, Memory=4096MB, Disk=20000MB).
+By default, it will spin up a one node Kubernetes cluster of version `v1.19.4` in VirtualBox VM (CPUs=4, Memory=4096MB, Disk=20000MB).
 
-You can pass addition parameters to change the default values:
+You can pass additional parameters to change the default values:
 
 ```bash
 make setup cpu=2 memory=2048
@@ -108,36 +108,40 @@ Wait for all the pods to be up and running (it may take some time):
 kubectl get pods -A -w
 ```
 
-While you wait, use `minikube ip to` get the external IP of the cluster:
+While you wait, use `minikube IP to` get the external IP of the cluster:
 
 ```shell-session
-$ minikube ip     
+$ minikube IP     
 192.168.99.113
 ```
 
-Add ingresses to `/etc/hosts` file by adding the following line to the bottom of the file:
+Add ingresses to `/etc/hosts file by adding the following line to the bottom of the file:
 
 ```bash
 192.168.99.113 directory.fury.info alertmanager.fury.info goldpinger.fury.info grafana.fury.info prometheus.fury.info >> /etc/hosts
 ```
 
 Replace `192.168.99.113` with your actual IP.
-If you are adventurous enough you use this one-liner:
+If you are adventurous enough, you might want to use this one-liner:
 
 ```bash
-sudo bash -c "echo $(minikube ip) directory.fury.info alertmanager.fury.info goldpinger.fury.info grafana.fury.info prometheus.fury.info >> /etc/hosts"
+sudo bash -c "echo $(minikube IP) directory.fury.info alertmanager.fury.info goldpinger.fury.info grafana.fury.info prometheus.fury.info >> /etc/hosts"
 ```
 
 ## Explore the distribution
 
-Open a browser and go to `directory.fury.info` here you can have a look around to all you have deployed.
+Open a browser and go to `directory.fury.info`. This is the forecastle page with all the ingresses. You can have a look around and:
+Inspect the logs in Kibana
+See the alerts in Alertmanager
+Explore the metrics in Prometheus
+Visualize the dashboards in Grafana
 
 ## Create Kibana index patterns
 
-Kibana requires an index pattern to access the Elasticsearch data that you want to explore. An index pattern selects the data to use and allows you to define properties of the fields.
+Kibana requires an index pattern to access the Elasticsearch data that you want to explore. An index pattern selects the data to use and allows you to define the properties of the fields.
 We are going to create the following index patterns:
 
-- `kubernetes-*`
+- `Kubernetes-*`
 - `system-`
 - `nginx-ingress-controller-*`
 
@@ -169,11 +173,13 @@ curl -X POST kibana.fury.info/api/saved_objects/index-pattern/nginx-ingress-cont
 
 ## Cleanup
 
-To clean up just delete the `minikube` cluster:
+To clean up:
+
+- delete the `minikube` cluster:
 
 ```bash
 cd $REPO_DIR/minikube
 make delete
 ```
 
-Delete the line you added in `/etc/hosts`.
+- delete the line you added in `/etc/hosts.
