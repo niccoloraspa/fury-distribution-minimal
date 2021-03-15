@@ -11,13 +11,12 @@ resources:
   - ../vendor/katalog/monitoring/kube-state-metrics
   - ../vendor/katalog/monitoring/grafana
   - ../vendor/katalog/monitoring/goldpinger
-  # - ../vendor/katalog/monitoring/kubeadm-sm # ?
   - ../vendor/katalog/monitoring/configs
 
   # Fury logging
-  # - ../vendor/katalog/logging/elasticsearch-single
-  # - ../vendor/katalog/logging/fluentd
-  # - ../vendor/katalog/logging/kibana
+  - ../vendor/katalog/logging/elasticsearch-single
+  - ../vendor/katalog/logging/fluentd
+  - ../vendor/katalog/logging/kibana
 
   # # Fury Ingress
   - ../vendor/katalog/ingress/nginx
@@ -32,3 +31,8 @@ patchesStrategicMerge:
     - patches/monitoring/prometheus-operated-resources.yaml
     - patches/monitoring/prometheus-operator-resources.yaml
     - patches/monitoring/grafana-resources.yaml
+    - patches/ingress/nginx-ingress-controller-resources.yaml
+    - patches/logging/fluentd-resources.yaml
+    - patches/logging/kibana-resources.yaml
+    - patches/logging/fluentbit-resources.yaml
+    - patches/logging/elasticsearch-resources.yaml

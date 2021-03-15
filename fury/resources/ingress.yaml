@@ -23,7 +23,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: "internal"
+    kubernetes.io/ingress.class: "nginx"
     forecastle.stakater.com/expose: "true"
     forecastle.stakater.com/appName: "Forecastle"
     forecastle.stakater.com/icon: "https://raw.githubusercontent.com/stakater/Forecastle/master/assets/web/forecastle-round-100px.png"
@@ -39,51 +39,31 @@ spec:
           serviceName: forecastle
           servicePort: 80
 ---
-# apiVersion: networking.k8s.io/v1beta1
-# kind: Ingress
-# metadata:
-#   annotations:
-#     kubernetes.io/ingress.class: "internal"
-#     forecastle.stakater.com/expose: "true"
-#     forecastle.stakater.com/appName: "Cerebro"
-#     forecastle.stakater.com/icon: "https://github.com/stakater/ForecastleIcons/raw/master/cerebro.png"
-#   name: cerebro
-#   namespace: logging
-# spec:
-#   rules:
-#   - host: cerebro.fury.info
-#     http:
-#       paths:
-#       - path: /
-#         backend:
-#           serviceName: cerebro
-#           servicePort: http
-#---
-# apiVersion: networking.k8s.io/v1beta1
-# kind: Ingress
-# metadata:
-#   annotations:
-#     kubernetes.io/ingress.class: "internal"
-#     forecastle.stakater.com/expose: "true"
-#     forecastle.stakater.com/appName: "Kibana"
-#     forecastle.stakater.com/icon: "https://github.com/stakater/ForecastleIcons/raw/master/kibana.png"
-#   name: kibana
-#   namespace: logging
-# spec:
-#   rules:
-#   - host: kibana.fury.info
-#     http:
-#       paths:
-#       - path: /
-#         backend:
-#           serviceName: kibana
-#           servicePort: http
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    forecastle.stakater.com/expose: "true"
+    forecastle.stakater.com/appName: "Kibana"
+    forecastle.stakater.com/icon: "https://github.com/stakater/ForecastleIcons/raw/master/kibana.png"
+  name: kibana
+  namespace: logging
+spec:
+  rules:
+  - host: kibana.fury.info
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kibana
+          servicePort: http
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: "internal"
+    kubernetes.io/ingress.class: "nginx"
     forecastle.stakater.com/expose: "true"
     forecastle.stakater.com/appName: "Alertmanager"
     forecastle.stakater.com/icon: "https://github.com/stakater/ForecastleIcons/raw/master/alert-manager.png"
@@ -103,7 +83,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: "internal"
+    kubernetes.io/ingress.class: "nginx"
     forecastle.stakater.com/expose: "true"
     forecastle.stakater.com/appName: "Goldpinger"
     forecastle.stakater.com/icon: "https://avatars2.githubusercontent.com/u/1416818?s=200&v=4"
@@ -123,7 +103,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: "internal"
+    kubernetes.io/ingress.class: "nginx"
     forecastle.stakater.com/expose: "true"
     forecastle.stakater.com/appName: "Prometheus"
     forecastle.stakater.com/icon: "https://github.com/stakater/ForecastleIcons/raw/master/prometheus.png"
