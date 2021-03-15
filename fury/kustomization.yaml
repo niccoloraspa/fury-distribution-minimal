@@ -18,21 +18,22 @@ resources:
   - ../vendor/katalog/logging/fluentd
   - ../vendor/katalog/logging/kibana
 
-  # # Fury Ingress
+  # Fury Ingress
   - ../vendor/katalog/ingress/nginx
   - ../vendor/katalog/ingress/forecastle
 
-  # Custom resources
+  # Ingress definitions
   - resources/ingress.yaml
 
 patchesStrategicMerge:
+
     - patches/monitoring/alertmanager-operated-replicas.yaml
     - patches/monitoring/alertmanager-operated-resources.yaml
     - patches/monitoring/prometheus-operated-resources.yaml
     - patches/monitoring/prometheus-operator-resources.yaml
     - patches/monitoring/grafana-resources.yaml
-    - patches/ingress/nginx-ingress-controller-resources.yaml
     - patches/logging/fluentd-resources.yaml
     - patches/logging/kibana-resources.yaml
     - patches/logging/fluentbit-resources.yaml
     - patches/logging/elasticsearch-resources.yaml
+    - patches/ingress/nginx-ingress-controller-resources.yaml
