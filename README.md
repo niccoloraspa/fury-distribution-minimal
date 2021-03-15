@@ -76,7 +76,7 @@ cd $REPO_DIR/minikube
 make setup
 ```
 
-By default, it will spin up a one node Kubernetes cluster of version `v1.19.4` in VirtualBox VM (CPUs=4, Memory=4096MB, Disk=20000MB).
+By default, it will spin up a one node Kubernetes cluster of version `v1.19.4` in a VirtualBox VM (CPUs=4, Memory=4096MB, Disk=20000MB).
 
 You can pass additional parameters to change the default values:
 
@@ -108,14 +108,14 @@ Wait for all the pods to be up and running (it may take some time):
 kubectl get pods -A -w
 ```
 
-While you wait, use `minikube IP to` get the external IP of the cluster:
+While you wait, use `minikube ip` to get the external IP of the cluster:
 
 ```shell-session
-$ minikube IP     
+$ minikube ip     
 192.168.99.113
 ```
 
-Add ingresses to `/etc/hosts file by adding the following line to the bottom of the file:
+Add ingresses to `/etc/hosts` file by adding the following line to the bottom of the file:
 
 ```bash
 192.168.99.113 directory.fury.info alertmanager.fury.info goldpinger.fury.info grafana.fury.info prometheus.fury.info >> /etc/hosts
@@ -125,23 +125,24 @@ Replace `192.168.99.113` with your actual IP.
 If you are adventurous enough, you might want to use this one-liner:
 
 ```bash
-sudo bash -c "echo $(minikube IP) directory.fury.info alertmanager.fury.info goldpinger.fury.info grafana.fury.info prometheus.fury.info >> /etc/hosts"
+sudo bash -c "echo $(minikube ip) directory.fury.info alertmanager.fury.info goldpinger.fury.info grafana.fury.info prometheus.fury.info >> /etc/hosts"
 ```
 
 ## Explore the distribution
 
 Open a browser and go to `directory.fury.info`. This is the forecastle page with all the ingresses. You can have a look around and:
-Inspect the logs in Kibana
-See the alerts in Alertmanager
-Explore the metrics in Prometheus
-Visualize the dashboards in Grafana
 
-## Create Kibana index patterns
+- Inspect the logs in Kibana
+- See the alerts in Alertmanager
+- Explore the metrics in Prometheus
+- Visualize the dashboards in Grafana
+
+### Create Kibana index patterns
 
 Kibana requires an index pattern to access the Elasticsearch data that you want to explore. An index pattern selects the data to use and allows you to define the properties of the fields.
 We are going to create the following index patterns:
 
-- `Kubernetes-*`
+- `kubernetes-*`
 - `system-`
 - `nginx-ingress-controller-*`
 
