@@ -28,7 +28,7 @@ You can inspect the `Furyfile.yml` to see the list of the packages deployed.
 
 #### Logging Packages
 
-```shell-session
+```bash
 $ cat Furyfile.yml | grep logging
   logging: v1.7.1
   - name: logging/elasticsearch-single
@@ -38,7 +38,7 @@ $ cat Furyfile.yml | grep logging
 
 #### Monitoring Packages
 
-```shell-session
+```bash
 $ cat Furyfile.yml | grep monitoring
   monitoring: v1.11.1
   - name: monitoring/prometheus-operator
@@ -54,7 +54,7 @@ $ cat Furyfile.yml | grep monitoring
 
 #### Ingress Packages
 
-```shell-session
+```bash
 $ cat Furyfile.yml | grep ingress
   ingress: d34f8228dc8b108526f8dbfbcf598c74f842832e
   - name: ingress/forecastle
@@ -110,7 +110,7 @@ kubectl get pods -A -w
 
 While you wait, use `minikube ip` to get the external IP of the cluster:
 
-```shell-session
+```bash
 $ minikube ip     
 192.168.99.113
 ```
