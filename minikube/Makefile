@@ -5,6 +5,9 @@ cpu?=4
 cni?=calico
 nodes?=1
 
+.PHONY: setup
+setup: minikube addons
+
 .PHONY: minikube
 minikube:
 	minikube start \
