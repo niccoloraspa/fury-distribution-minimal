@@ -28,6 +28,7 @@ resources:
 
 patchesStrategicMerge:
     - patches/monitoring/alertmanager-operated-replicas.yaml
-#   - patches/logging-resources.yaml
-#   - patches/monitoring-resources.yaml
-#   - patches/ingress-resources.yaml
+    - patches/monitoring/alertmanager-operated-resources.yaml
+    - patches/monitoring/prometheus-operated-resources.yaml
+    - patches/monitoring/prometheus-operator-resources.yaml
+    - patches/monitoring/grafana-resources.yaml
