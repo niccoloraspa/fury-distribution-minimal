@@ -183,4 +183,4 @@ cd $REPO_DIR/minikube
 make delete
 ```
 
-- delete the line you added in `/etc/hosts.
+- delete the line you added in `/etc/hosts`.
