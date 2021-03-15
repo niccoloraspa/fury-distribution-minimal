@@ -1,5 +1,5 @@
 versions:
-  monitoring: d4ac34771b33611490d8c64cb458cabe874c2956
+  monitoring: v1.11.1
   logging: v1.7.1  
   ingress: d34f8228dc8b108526f8dbfbcf598c74f842832e
 

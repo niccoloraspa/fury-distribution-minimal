@@ -1,6 +1,6 @@
-# Fury Distribution Minimal
+# Fury Distribution Minikube
 
-A minimimal deployment of the [Fury Kubernetes Distribution](https://github.com/sighupio/fury-distribution).
+A minimimal deployment of the [Fury Kubernetes Distribution](https://github.com/sighupio/fury-distribution) in a minikube environment.
 
 ## Tools required
 
@@ -16,9 +16,9 @@ The following modules of the distribution are deployed:
 
 | Module                                                                    | Version                                  |
 | -------------                                                             | -------------                            |
-| [Fury Monitoring](https://github.com/sighupio/fury-kubernetes-monitoring) | d4ac34771b33611490d8c64cb458cabe874c2956 |
+| [Fury Monitoring](https://github.com/sighupio/fury-kubernetes-monitoring) | v1.11.1                                  |
 | [Fury Logging](https://github.com/sighupio/fury-kubernetes-logging)       | v1.7.1                                   |
-| [Fury Ingress](https://github.com/sighupio/fury-kubernetes-ingress)       | d34f8228dc8b108526f8dbfbcf598c74f842832e |
+| [Fury Ingress](https://github.com/sighupio/fury-kubernetes-ingress)       | v1.9.1                                   |
 
 You change the version by modifying the `Furyfile.yml` and then update the vendor folder via `furyctl vendor -H`
 
@@ -40,7 +40,7 @@ $ cat Furyfile.yml | grep logging
 
 ```shell-session
 $ cat Furyfile.yml | grep monitoring
-  monitoring: d4ac34771b33611490d8c64cb458cabe874c2956
+  monitoring: v1.11.1
   - name: monitoring/prometheus-operator
   - name: monitoring/prometheus-operated
   - name: monitoring/alertmanager-operated
