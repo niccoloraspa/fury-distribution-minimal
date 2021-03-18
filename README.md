@@ -18,7 +18,7 @@ The following modules of the distribution are deployed:
 | -------------                                                             | -------------                            |
 | [Fury Monitoring](https://github.com/sighupio/fury-kubernetes-monitoring) | v1.11.1                                  |
 | [Fury Logging](https://github.com/sighupio/fury-kubernetes-logging)       | v1.7.1                                   |
-| [Fury Ingress](https://github.com/sighupio/fury-kubernetes-ingress)       | d34f8228dc8b108526f8dbfbcf598c74f842832e |
+| [Fury Ingress](https://github.com/sighupio/fury-kubernetes-ingress)       | v1.9.2                                   |
 
 You can change the versions by modifying the `Furyfile.yml` and then update the vendor folder via `furyctl vendor -H.`
 
@@ -56,7 +56,7 @@ $ cat Furyfile.yml | grep monitoring
 
 ```bash
 $ cat Furyfile.yml | grep ingress
-  ingress: d34f8228dc8b108526f8dbfbcf598c74f842832e
+  ingress: v1.9.2
   - name: ingress/forecastle
   - name: ingress/nginx
 ```
